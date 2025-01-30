@@ -134,6 +134,45 @@ git tag apps-deploy-$(git rev-parse --short HEAD)
 git push origin apps-deploy-$(git rev-parse --short HEAD)
 ```
 
+## Cert-Manager Installation
+
+Add cert-manager service:
+
+```bash
+# add cert-manager service to every cluster
+# append --cluster-name NAME
+# to only add to a single cluster
+kbst add service cert-manager
+```
+
+Apply changes:
+
+```bash
+# create a new feature branch
+git checkout -b add-cert-manager
+
+# add the changes and commit them
+git add .
+git commit -m "Install cert-manager and let's encrypt issuer"
+
+# push the changes to trigger the pipeline
+git push origin add-cert-manager
+```
+
+Promote changes:
+
+```bash
+# make sure you're on the merge commit
+git checkout main
+git pull
+
+# then tag the commit 
+git tag apps-deploy-$(git rev-parse --short HEAD)
+
+# finally push the tag, to trigger the pipeline to promote
+git push origin apps-deploy-$(git rev-parse --short HEAD)
+```
+
 ## Get kubeconfig
 
 ```bash
