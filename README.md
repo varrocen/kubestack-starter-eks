@@ -69,3 +69,9 @@ git tag apps-deploy-0
 # push the tag to origin to trigger the pipeline
 git push origin apps-deploy-0
 ```
+
+## Get kubeconfig
+
+```
+aws eks update-kubeconfig --region eu-west-3 --name gc0-ops-eu-west-3
+```
