@@ -46,3 +46,26 @@ terraform apply --auto-approve
 terraform workspace select apps
 terraform apply --auto-approve
 ```
+
+## Follow the GitOps process
+
+Create branch:
+
+```
+ git add .
+ git commit -m "Add Github Actions pipeline"
+ git push origin ghactions
+```
+
+Open a pull request and merge.
+
+```
+# checkout the main branch
+git checkout main
+# pull changes from origin
+git pull
+# tag the merge commit
+git tag apps-deploy-0
+# push the tag to origin to trigger the pipeline
+git push origin apps-deploy-0
+```
